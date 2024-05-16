@@ -1,0 +1,138 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;  
+    font-weight: 200;  
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #2f363e; /* Dark background color */
+}
+
+/* Update color variable */
+:root {
+    --clr: #ff5733; /* Orange color */
+}
+
+#clock{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+}
+
+#hr, #min, #sec{
+    position: relative;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    rotate: 90deg;
+}
+
+#hr::before, 
+#min::before, 
+#sec::before{
+    content: '';
+    position: absolute;
+    inset: -25px;
+    border-radius: 50%;
+    box-shadow: 25px 25px 75px rgba(0, 0, 0, 0.25),
+    10px 10px 70px rgba(0, 0, 0, 0.25),
+    inset 5px 5px 10px rgba(0, 0, 0, 0.25),
+    inset 5px 5px 20px rgba(255, 255, 255, 0.2),
+    inset -5px -5px 15px rgba(0, 0, 0, 0.75);
+}
+
+#hr h2, 
+#min h2, 
+#sec h2{
+    position: absolute;
+    transform: rotate(-90deg);
+    text-align: center;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    font-weight: 400;
+    color: var(--clr); /* Use the color variable */
+}
+
+#hr h2 span, 
+#min h2 span, 
+#sec h2 span{
+    position: absolute;
+    font-size: 0.25em;
+    font-weight: 400;
+    bottom: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+#sec b{
+    position: absolute;
+    color: white;
+    display: inline-flex;
+    transform: rotate(-90deg) translate(-30px,90px);
+}
+
+#hr .dot, 
+#min .dot,
+#sec .dot{
+    position: absolute;
+    top: 50%;
+    width: 10px;
+    height: 3px;
+    background: var(--clr); /* Use the color variable */
+    transform-origin: 100px;
+}
+
+#hr .dot .active, 
+#min .dot .active,
+#sec .dot .active{
+    background: var(--clr); /* Use the color variable */
+    box-shadow: 0 0 10px var(--clr),
+    0 0 20px var(--clr),
+    0 0 30px var(--clr);
+}
+
+#hr .dot.active ~ .dot, 
+#min .dot.active ~ .dot,
+#sec .dot.active ~ .dot{
+    background: #555;
+}
+
+#min .dot:nth-child(5n + 5),
+#sec .dot:nth-child(5n + 5){
+    width: 20px;
+}
+
+#hr .dot{
+    width: 20px;
+}
+#hr .dot::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 4px;
+    height: 4px;
+    border-radius: 4px;
+    background: var(--clr); /* Use the color variable */
+    box-shadow: 1.5px 9px var(--clr),
+    4px 18px var(--clr),
+    7px 27px var(--clr);
+}
+
+#hr .dot.active ~.dot::before{
+    background: #555;
+    box-shadow: 1.5px 9px #555,
+    4px 18px #555,
+    7px 27px #555;
+}
